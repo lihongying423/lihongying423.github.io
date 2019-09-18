@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<style type="text/css">
+	.lee-enter{
+		left: -800px !important;
+		opacity: 0;
+
+	}
+
+	.lee-enter-active{
+		transition: all 1s;
+	}
+
+	.lee-enter-to{
+
+	}
+
+	.lee-leave{
+
+	}
+
+	.lee-leave-active{
+		transition: all 1s;
+	}
+	.lee-leave-to{
+		opacity: 0;
+		left: 800px !important;
+
+	}
+
+
+	.lee2-enter{
+		left: 800px !important;
+		opacity: 0;
+
+	}
+
+	.lee2-enter-active{
+		transition: all 1s;
+	}
+
+	.lee2-enter-to{
+		/*background: blue;*/
+	}
+
+	.lee2-leave{
+		/*background: blue;*/
+	}
+
+	.lee2-leave-active{
+		transition: all 1s;
+	}
+	.lee2-leave-to{
+		opacity: 0;
+		left: -800px !important;
+
+	}
+
+
+</style>
+</head>
+<body>
+	<div id="box">
+		<lee style='text-align: center;'>
+			
+		</lee>
+		
+	</div>
+<template id="lee">
+	<div>
+		<button @click='no1'>下一站</button>
+		<button @click='no2'>上一张</button>
+<div style="width: 800px;margin: 0 auto; position: relative;">
+	<transition :name='t_type'v-for='(i,$index) in arr'>
+<div style="width: 800px;position: absolute;left: 0;top: 0;" v-show='type==$index'>
+	<img :src="i" width="800px"/>
+</div>		
+	</transition>
+</div>
+
+	</div>
+</template>
+
+ 
+
+</body>
+<script src="vue.js"></script>
+<script>
+	Vue.component('lee',{
+		template:'#lee',
+		methods:{
+			no1(){
+				this.t_type='lee'
+				this.type++
+				if (this.type>=5) {
+					this.type=0
+				}
+			},
+			no2(){
+				this.t_type='lee'
+				this.type--
+				if (this.type<=-1) {
+					this.type=4
+				}
+			}
+		},
+data(){
+			return{
+				type:0,
+				t_type:'lee',
+				arr:[
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567655286170&di=7120d0294a70a02360a18f438d331a2e&imgtype=0&src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1309%2F08%2Fc11%2F25402653_1378611252680_mthumb.jpg',
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567655147478&di=47cb7570eb8dca997aa57f2e03c185fb&imgtype=0&src=http%3A%2F%2Fimages3.ctrip.com%2Fwri%2Fimages%2F200611%2FSUNNYYANLI07200334734.jpg',
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567655147473&di=8cbbe4dfaec102bc554b9e4ef20be468&imgtype=0&src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ftg%2F030%2F501%2F343%2Fa75cf05b940745d1a5f9015f234100fb.jpg',
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567655200800&di=2215a559472aa0c1b24394ffe0144cbd&imgtype=0&src=http%3A%2F%2Fstatics.glshimg.com%2Fforum%2F201510%2F19%2F220006qugyl3z3dg34edlz.jpg',
+				'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567655286171&di=4d6b7a513ba0aca42fdc3ae8a85a27b6&imgtype=0&src=http%3A%2F%2Fculture.people.com.cn%2FNMediaFile%2F2015%2F1111%2FMAIN201511111746000022924858407.jpg'
+				]
+			}
+		}
+
+	})
+	new Vue({
+		el:'#box'
+	})
+</script>
+</html>
